@@ -1,0 +1,100 @@
+# AI Model Configuration
+models:
+  openai:
+    gpt-4:
+      model_name: "gpt-4"
+      temperature: 0.1
+      max_tokens: 4000
+      top_p: 1.0
+      frequency_penalty: 0.0
+      presence_penalty: 0.0
+    
+    gpt-3.5-turbo:
+      model_name: "gpt-3.5-turbo"
+      temperature: 0.1
+      max_tokens: 2000
+      top_p: 1.0
+      frequency_penalty: 0.0
+      presence_penalty: 0.0
+
+  embeddings:
+    text-embedding-ada-002:
+      model_name: "text-embedding-ada-002"
+      dimensions: 1536
+      max_tokens: 8191
+    
+    sentence-transformers:
+      model_name: "all-MiniLM-L6-v2"
+      dimensions: 384
+      max_tokens: 256
+
+# Legal Analysis Prompts
+prompts:
+  case_analysis:
+    system: |
+      You are an expert legal analyst with deep knowledge of case law and legal precedents.
+      Analyze the provided case facts and identify relevant legal issues, potential defenses,
+      and applicable precedents. Provide structured, professional legal analysis.
+    
+    user_template: |
+      Case Facts: {case_facts}
+      Jurisdiction: {jurisdiction}
+      Case Type: {case_type}
+      
+      Please provide a comprehensive legal analysis including:
+      1. Key legal issues
+      2. Potential defenses
+      3. Relevant precedents
+      4. Risk assessment
+      5. Recommended strategy
+
+  defense_generation:
+    system: |
+      You are a skilled defense attorney with expertise in crafting legal arguments.
+      Generate comprehensive defense strategies based on case facts and precedents.
+      Focus on practical, legally sound arguments that can be presented in court.
+    
+    user_template: |
+      Case Facts: {case_facts}
+      Similar Cases: {similar_cases}
+      Jurisdiction: {jurisdiction}
+      
+      Generate a defense strategy including:
+      1. Primary defense arguments
+      2. Supporting evidence requirements
+      3. Witness strategy
+      4. Cross-examination points
+      5. Closing argument framework
+
+  precedent_analysis:
+    system: |
+      You are a legal researcher specializing in case law analysis.
+      Analyze legal precedents and extract key legal principles, holdings, and reasoning.
+      Focus on applicability to current cases.
+    
+    user_template: |
+      Precedent Case: {case_name}
+      Case Text: {case_text}
+      
+      Extract and analyze:
+      1. Key legal principles
+      2. Court's reasoning
+      3. Applicable holdings
+      4. Distinguishing factors
+      5. Relevance to similar cases
+
+# Model Selection Rules
+model_selection:
+  case_analysis: "gpt-4"
+  defense_generation: "gpt-4"
+  precedent_analysis: "gpt-3.5-turbo"
+  document_summarization: "gpt-3.5-turbo"
+  similarity_matching: "text-embedding-ada-002"
+
+# Performance Settings
+performance:
+  batch_size: 10
+  max_concurrent_requests: 5
+  timeout_seconds: 30
+  retry_attempts: 3
+  cache_duration_hours: 24 

@@ -1,0 +1,26 @@
+IN THE SUPREME COURT OF CALIFORNIA
+
+Case No. S123456
+
+JOHN DOE, Plaintiff,
+v.
+STATE OF CALIFORNIA, Defendant.
+
+Filed: January 15, 2020
+
+OPINION BY CHIEF JUSTICE SMITH
+
+This case presents the issue of whether the defendant, State of California, is liable for damages resulting from the alleged breach of contract with the plaintiff, John Doe. The evidence presented at trial established that the plaintiff entered into a valid contract with the State, and that the State failed to perform its obligations under the agreement.
+
+The key facts are as follows: The plaintiff provided services to the State under a written agreement dated March 1, 2018. The State failed to make payment for services rendered, despite repeated demands. The trial court found in favor of the plaintiff, awarding damages in the amount of $100,000.
+
+The legal issues before this Court are: (1) Whether the State's failure to pay constitutes a material breach of contract; (2) Whether sovereign immunity bars recovery in this case; and (3) Whether the damages awarded were appropriate.
+
+We hold that the State's failure to pay was a material breach of contract. Sovereign immunity does not apply in this context, as the State has waived immunity for contractual claims. The damages awarded are supported by the evidence.
+
+Accordingly, the judgment of the trial court is affirmed.
+
+It is so ordered.
+
+CHIEF JUSTICE SMITH
+January 15, 2020 

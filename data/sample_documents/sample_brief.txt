@@ -1,0 +1,39 @@
+IN THE COURT OF APPEAL OF THE STATE OF CALIFORNIA
+
+Case No. B654321
+
+APPELLANT'S OPENING BRIEF
+
+JOHN DOE, Appellant,
+v.
+STATE OF CALIFORNIA, Appellee.
+
+STATEMENT OF THE CASE
+
+This appeal arises from a judgment entered in favor of the plaintiff, John Doe, in a breach of contract action against the State of California. The trial court awarded damages in the amount of $100,000.
+
+STATEMENT OF FACTS
+
+John Doe entered into a contract with the State of California on March 1, 2018, to provide consulting services. The State failed to pay for services rendered, despite multiple requests for payment. The trial court found that the State's failure to pay constituted a material breach of contract.
+
+ISSUES PRESENTED
+
+1. Did the trial court err in finding that the State's failure to pay was a material breach of contract?
+2. Does sovereign immunity bar recovery in this case?
+3. Were the damages awarded excessive?
+
+ARGUMENT
+
+I. The State's failure to pay was a material breach of contract.
+II. Sovereign immunity does not bar recovery because the State waived immunity for contractual claims.
+III. The damages awarded are supported by the evidence and are not excessive.
+
+CONCLUSION
+
+For the foregoing reasons, the judgment of the trial court should be affirmed.
+
+Respectfully submitted,
+
+Jane Attorney
+Attorney for Appellant
+January 30, 2020 

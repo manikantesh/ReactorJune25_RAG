@@ -1,0 +1,139 @@
+# Legal Analysis Rules and Frameworks
+
+# Jurisdiction-Specific Rules
+jurisdictions:
+  federal:
+    name: "Federal Courts"
+    court_hierarchy:
+      - "Supreme Court"
+      - "Circuit Courts of Appeals"
+      - "District Courts"
+    citation_format: "Bluebook"
+    
+  california:
+    name: "California Courts"
+    court_hierarchy:
+      - "California Supreme Court"
+      - "California Courts of Appeal"
+      - "Superior Courts"
+    citation_format: "California Style Manual"
+    
+  new_york:
+    name: "New York Courts"
+    court_hierarchy:
+      - "New York Court of Appeals"
+      - "Appellate Division"
+      - "Supreme Court"
+      - "County Courts"
+    citation_format: "New York Law Reports Style Manual"
+
+# Case Type Classifications
+case_types:
+  criminal:
+    categories:
+      - "felony"
+      - "misdemeanor"
+      - "infraction"
+    key_issues:
+      - "mens rea"
+      - "actus reus"
+      - "causation"
+      - "defenses"
+    
+  civil:
+    categories:
+      - "contract"
+      - "tort"
+      - "property"
+      - "family"
+      - "employment"
+    key_issues:
+      - "breach"
+      - "damages"
+      - "liability"
+      - "remedies"
+
+# Legal Analysis Framework
+analysis_framework:
+  case_analysis:
+    steps:
+      1: "Identify parties and jurisdiction"
+      2: "Determine case type and applicable law"
+      3: "Extract key facts and legal issues"
+      4: "Identify potential defenses"
+      5: "Find relevant precedents"
+      6: "Assess strengths and weaknesses"
+      7: "Recommend strategy"
+    
+  defense_generation:
+    components:
+      - "primary defense arguments"
+      - "supporting evidence"
+      - "witness strategy"
+      - "cross-examination points"
+      - "closing arguments"
+      - "risk assessment"
+
+# Precedent Analysis Rules
+precedent_analysis:
+  relevance_factors:
+    - "same jurisdiction"
+    - "similar facts"
+    - "same legal issue"
+    - "recent decision"
+    - "binding authority"
+  
+  weight_factors:
+    - "court level (higher = more weight)"
+    - "recency (newer = more weight)"
+    - "factual similarity"
+    - "legal reasoning quality"
+    - "subsequent treatment"
+
+# Document Processing Rules
+document_processing:
+  required_fields:
+    - "case_name"
+    - "court"
+    - "date"
+    - "judges"
+    - "holding"
+    - "reasoning"
+  
+  extraction_priorities:
+    1: "case name and citation"
+    2: "court and date"
+    3: "key facts"
+    4: "legal issues"
+    5: "holding and reasoning"
+    6: "dissenting opinions"
+
+# Quality Control Rules
+quality_control:
+  confidence_thresholds:
+    low: 0.6
+    medium: 0.8
+    high: 0.9
+  
+  validation_checks:
+    - "citation accuracy"
+    - "fact consistency"
+    - "legal reasoning soundness"
+    - "jurisdiction compliance"
+    - "recency verification"
+
+# Risk Assessment Framework
+risk_assessment:
+  factors:
+    - "strength of evidence"
+    - "witness credibility"
+    - "legal precedent support"
+    - "jurisdiction favorability"
+    - "judge tendencies"
+    - "jury composition"
+  
+  risk_levels:
+    low: "Strong case with favorable precedents"
+    medium: "Mixed evidence with some favorable factors"
+    high: "Weak case with unfavorable precedents"
+    critical: "Very weak case requiring settlement consideration" 
