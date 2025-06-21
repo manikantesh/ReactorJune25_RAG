@@ -85,8 +85,8 @@ prompts:
 
 # Model Selection Rules
 model_selection:
-  case_analysis: "gpt-4"
-  defense_generation: "gpt-4"
+  case_analysis: "gpt-3.5-turbo"
+  defense_generation: "gpt-3.5-turbo"
   precedent_analysis: "gpt-3.5-turbo"
   document_summarization: "gpt-3.5-turbo"
   similarity_matching: "text-embedding-ada-002"

@@ -17,7 +17,7 @@ import chromadb
 from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer
 
-from ..ai_models.openai_client import OpenAIClient
+from src.ai_models.claude_client import ClaudeClient
 
 logger = logging.getLogger(__name__)
 
@@ -56,18 +56,18 @@ class LegalAnalyzer:
     
     def __init__(self, 
                  vector_db_path: Optional[str] = None,
-                 openai_client: Optional[OpenAIClient] = None,
+                 claude_client: Optional[ClaudeClient] = None,
                  config: Optional[Dict] = None):
         """Initialize the legal analyzer.
         
         Args:
             vector_db_path: Path to vector database
-            openai_client: OpenAI client instance
+            claude_client: Claude client instance
             config: Configuration dictionary
         """
         self.config = config or {}
         self.vector_db_path = vector_db_path or "./data/chroma_db"
-        self.openai_client = openai_client or OpenAIClient()
+        self.claude_client = claude_client or ClaudeClient()
         
         # Initialize vector database
         self._init_vector_db()
@@ -251,14 +251,14 @@ class LegalAnalyzer:
             )
             
             # Analyze case using AI
-            case_analysis = self.openai_client.analyze_case(
+            case_analysis = self.claude_client.analyze_case(
                 case_facts, jurisdiction, case_type
             )
             
             # Analyze precedents
             precedents = []
             for case in similar_cases[:3]:  # Analyze top 3 similar cases
-                precedent_analysis = self.openai_client.analyze_precedent(
+                precedent_analysis = self.claude_client.analyze_precedent(
                     case.case_name, 
                     self._prepare_case_text(case)
                 )
