@@ -1,202 +1,168 @@
-# AI Legal Assistant - Case Defense Generator
+# Legal AI Assistant
 
-An intelligent AI system that analyzes past court records, judgments, and legal documents to generate comprehensive defense strategies for new cases.
+A comprehensive legal AI assistant that uses Claude AI models to analyze legal cases, generate defense strategies, and provide legal document analysis. Built with ChromaDB for vector storage and FastAPI for the web interface.
 
-## 🎯 Project Overview
+## Features
 
-This AI-powered legal assistant leverages advanced natural language processing and machine learning techniques to:
-- Analyze historical court records and judgments
-- Extract relevant legal precedents and arguments
-- Generate comprehensive defense strategies
-- Provide case law recommendations
-- Create structured legal briefs
+- **Case Analysis**: AI-powered legal case analysis using Claude
+- **Defense Strategy Generation**: Generate comprehensive defense strategies based on case facts and precedents
+- **Document Processing**: Multi-format document ingestion (PDF, DOCX, TXT)
+- **Vector Search**: Semantic search through legal precedents and case law
+- **API Interface**: RESTful API for integration with other systems
+- **Multi-format Support**: Process legal documents in PDF, DOCX, and TXT formats
 
-## 🚀 Features
+## Architecture
 
-- **Document Processing**: OCR and text extraction from various legal document formats
-- **Precedent Analysis**: AI-powered analysis of past judgments and rulings
-- **Case Similarity Matching**: Find relevant precedents based on case facts
-- **Defense Strategy Generation**: Automated generation of defense arguments
-- **Legal Brief Creation**: Structured output of legal arguments and citations
-- **Confidence Scoring**: AI confidence levels for generated recommendations
+- **AI/ML**: Anthropic Claude
+- **Vector Database**: ChromaDB
+- **Web Framework**: FastAPI
+- **Document Processing**: PyPDF2, python-docx
+- **Embeddings**: Sentence Transformers
 
-## 📁 Project Structure
+## Quick Start
 
-```
-legal-ai-assistant/
-├── data/
-│   ├── sample_documents/          # Sample legal documents for testing
-│   ├── court_records/             # Historical court records
-│   └── processed_data/            # Processed and indexed documents
-├── src/
-│   ├── document_processor/        # Document parsing and OCR
-│   ├── ai_models/                 # AI/ML models for analysis
-│   ├── legal_analyzer/            # Legal precedent analysis
-│   ├── defense_generator/         # Defense strategy generation
-│   └── utils/                     # Utility functions
-├── api/
-│   ├── endpoints/                 # API endpoints
-│   └── middleware/                # API middleware
-├── frontend/                      # Web interface (if applicable)
-├── tests/                         # Unit and integration tests
-├── config/                        # Configuration files
-├── docs/                          # Documentation
-└── requirements.txt               # Python dependencies
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
 ```
 
-## 🛠️ Technology Stack
+### 2. Set Environment Variables
 
-- **Backend**: Python 3.9+
-- **AI/ML**: OpenAI GPT-4, LangChain, Transformers
-- **Document Processing**: PyPDF2, python-docx, OCR tools
-- **Database**: PostgreSQL with vector embeddings
-- **API**: FastAPI
-- **Frontend**: React.js (optional)
-- **Vector Database**: Pinecone or ChromaDB
+```bash
+export ANTHROPIC_API_KEY="your_anthropic_api_key_here"
+```
 
-## 📋 Prerequisites
+### 3. Test the Setup
 
-- Python 3.9 or higher
-- PostgreSQL database
-- OpenAI API key
-- Legal document corpus (court records, judgments)
+```bash
+# Test environment
+python test_env.py
 
-## 🚀 Quick Start
+# Test AI models
+python test_ai_models.py
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd legal-ai-assistant
-   ```
+### 4. Populate Database with Sample Data
 
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+python create_sample_documents.py
+python src/utils/populate_database.py
+```
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your API keys and database credentials
-   ```
+### 5. Start the API Server
 
-4. **Initialize the database**
-   ```bash
-   python src/utils/db_setup.py
-   ```
+```bash
+python api/main.py
+```
 
-5. **Process sample documents**
-   ```bash
-   python src/document_processor/process_documents.py
-   ```
+The API will be available at `http://localhost:8000`
 
-6. **Start the API server**
-   ```bash
-   python api/main.py
-   ```
+## API Endpoints
 
-## 📖 Usage
+### Case Analysis
+- `POST /analyze-case` - Analyze a legal case
+- `POST /generate-defense` - Generate defense strategy
+- `POST /analyze-precedent` - Analyze legal precedent
 
-### Basic Usage
+### Document Management
+- `POST /ingest-document` - Ingest legal documents
+- `GET /search-cases` - Search through case database
+- `GET /case/{case_id}` - Get specific case details
+
+### Health Check
+- `GET /health` - API health status
+
+## Project Structure
+
+```
+ReactorJune25_RAG/
+├── api/                    # FastAPI application
+├── config/                 # Configuration files
+├── data/                   # Data storage
+│   ├── chroma_db/         # Vector database
+│   ├── court_records/     # Legal documents
+│   └── sample_documents/  # Sample data
+├── src/                   # Source code
+│   ├── ai_models/        # AI model clients
+│   ├── defense_generator/ # Defense strategy generation
+│   ├── document_processor/ # Document processing
+│   ├── legal_analyzer/    # Legal analysis
+│   └── utils/            # Utility functions
+└── tests/                # Test files
+```
+
+## Configuration
+
+### AI Models (`config/ai_models.yaml`)
+Configure Claude models and prompts for different legal analysis tasks.
+
+### Legal Rules (`config/legal_rules.yaml`)
+Define legal rules and precedents for analysis.
+
+## Usage Examples
+
+### Basic Case Analysis
 
 ```python
-from src.legal_analyzer import LegalAnalyzer
-from src.defense_generator import DefenseGenerator
+from src.ai_models.model_manager import AIModelManager
 
-# Initialize the analyzer
-analyzer = LegalAnalyzer()
+manager = AIModelManager()
 
-# Analyze a new case
-case_facts = "Client charged with theft of $500 from employer..."
-similar_cases = analyzer.find_similar_cases(case_facts)
+# Analyze a case
+result = manager.analyze_case(
+    case_facts="Defendant charged with theft of $1,500",
+    jurisdiction="california",
+    case_type="criminal"
+)
 
+print(result['analysis'])
+```
+
+### Defense Strategy Generation
+
+```python
 # Generate defense strategy
-generator = DefenseGenerator()
-defense_strategy = generator.generate_defense(case_facts, similar_cases)
+strategy = manager.generate_defense_strategy(
+    case_facts="Your case facts here",
+    similar_cases=[{"case_name": "Example", "holding": "Example holding"}],
+    jurisdiction="california"
+)
+
+print(strategy['strategy'])
 ```
 
-### API Usage
+### Document Summarization
+
+```python
+# Summarize legal document
+summary = manager.summarize_document("Your legal document text here")
+print(summary['summary'])
+```
+
+## Testing
+
+Run comprehensive tests:
 
 ```bash
-# Submit a new case for analysis
-curl -X POST "http://localhost:8000/api/analyze-case" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "case_facts": "Client charged with theft...",
-    "jurisdiction": "California",
-    "case_type": "criminal"
-  }'
+# Test environment setup
+python test_env.py
+
+# Test AI models
+python test_ai_models.py
+
+# Test API endpoints
+python test_api_comprehensive.py
 ```
 
-## 🔧 Configuration
-
-The system can be configured through the `config/` directory:
-
-- `config/ai_models.yaml`: AI model configurations
-- `config/legal_rules.yaml`: Legal analysis rules
-- `config/database.yaml`: Database connection settings
-
-## 📊 Sample Data
-
-The project includes sample legal documents in `data/sample_documents/`:
-- Court judgments
-- Legal briefs
-- Case summaries
-- Legal precedents
-
-## 🧪 Testing
-
-Run the test suite:
-
-```bash
-# Run all tests
-pytest tests/
-
-# Run specific test categories
-pytest tests/test_legal_analyzer.py
-pytest tests/test_defense_generator.py
-```
-
-## 📈 Performance
-
-- Document processing: ~2-5 seconds per document
-- Case similarity matching: ~1-3 seconds
-- Defense generation: ~5-10 seconds
-- Overall accuracy: 85-90% (based on legal expert validation)
-
-## 🔒 Security & Privacy
-
-- All legal documents are processed locally
-- No sensitive case data is stored in external services
-- Encrypted storage for processed documents
-- Audit trail for all AI-generated recommendations
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Add tests for new functionality
+4. Add tests
 5. Submit a pull request
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## ⚠️ Disclaimer
-
-This AI system is designed to assist legal professionals and should not be used as a substitute for professional legal advice. Always consult with qualified legal counsel for actual legal matters.
-
-## 📞 Support
-
-For questions and support:
-- Create an issue in the repository
-- Contact the development team
-- Check the documentation in `docs/`
-
-## 🔄 Version History
-
-- **v1.0.0**: Initial release with basic document processing and analysis
-- **v1.1.0**: Added defense strategy generation
-- **v1.2.0**: Enhanced case similarity matching
-- **v2.0.0**: Complete rewrite with improved AI models and API
+This project is licensed under the MIT License - see the LICENSE file for details.
